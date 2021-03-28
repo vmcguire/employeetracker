@@ -28,6 +28,8 @@ You will also need inquirer, express, consol.table package and MySQL2 package to
 
 ## Usage Instructions
 
+Demonstration video of usage is here: https://drive.google.com/file/d/1xE0k09IOlVAJ1IM_IcSamRZx0rCCjvIk/view
+
 Navigate to the root folder of the application where the server.js file sits.
 
 To create the data base, you can source the schema.sql file from db/schema.sql into mySQL.
