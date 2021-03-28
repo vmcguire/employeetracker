@@ -1,0 +1,18 @@
+id,title,department_id,salary
+1,CEO,1,250,000.00
+2,CIO,1,180,000.00
+3,Engineer,2,130,000.00
+4,Engineering Lead,2,180,000.00
+5,COO,3,180,000.00
+6,Supply Chain Manager,3,140,000.00
+7,Accountant,4,100,000.00
+8,CFO,4,180,000.00
+9,General Counsel,4,160,000.00
+10,Human Resources,4,90,000.00
+11,Assembler,5,75,000.00
+12,Painter,5,60,000.00
+13,Tester,5,55,000.00
+14,Welder,5,65,000.00
+15,Inspector,6,85,000.00
+16,QA Lead,6,130,000.00
+17,R&D Engineer,2,140,000.00

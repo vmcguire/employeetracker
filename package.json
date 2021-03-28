@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "log": "mysql -u root -p",
+    "migrate": "sqlite3 db/election.db < db/schema.sql",
+    "seed": "sqlite3 db/election.db < db/seeds.sql",
+    "db": "sqlite3 db/election.db",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/vmcguire/employeetracker/issues"
   },
-  "homepage": "https://github.com/vmcguire/employeetracker#readme"
+  "homepage": "https://github.com/vmcguire/employeetracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
+  }
 }

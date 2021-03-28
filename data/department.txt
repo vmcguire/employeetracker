@@ -1,0 +1,7 @@
+﻿name,id
+Executive,1
+Engineering,2
+Operations,3
+Finance,4
+Manufacturing,5
+Quality,6
