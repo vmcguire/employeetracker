@@ -266,18 +266,18 @@ connection.connect((err) => {
   };
 
   updateEmployeeRole = () => {
-    function createDepartmentList() {
-      let departmentsArr = [];
+    function createEmployeeList() {
+      let employeesArr = [];
       let sql = `SELECT id, first_name, last_name FROM employee`;
       connection.query(sql, function (err, res, fields) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-          departmentsArr.push(
+          employeesArr.push(
             res[i].id + ": " + res[i].first_name + " " + res[i].last_name
           );
         }
       });
-      return [departmentsArr];
+      return [employeesArr];
     }
 
     function createRoleList() {
@@ -293,8 +293,8 @@ connection.connect((err) => {
       return [rolesArr];
     }
 
-    let departmentList = createDepartmentList();
-    let roleList = createRoleList();
+    let EmployeeList = createEmployeeList();
+    let RoleList = createRoleList();
 
     inquirer
       .prompt([
@@ -306,27 +306,27 @@ connection.connect((err) => {
         },
         {
           type: "list",
-          name: "departmentName",
+          name: "employeeName",
           message: "Please select the employee you would like to update.",
-          choices: departmentList[0],
+          choices: EmployeeList[0],
         },
         {
           type: "list",
           name: "newRoleName",
           message:
             "Please select the role you would like the employee to have now.",
-          choices: roleList[0],
+          choices: RoleList[0],
         },
       ])
       .then((selection) => {
-        // var RN = selection.roleName;
-        // var SN = selection.salaryNumber;
-        var DN = selection.departmentName;
-        var RL = selection.newRoleName;
-        var DNIDArr = DN.split(":");
-        var DepartmentID = DNIDArr[0];
-        var RLIDArr = RL.split(":");
-        var RoleID = RLIDArr[0];
+        let EN = selection.employeeName;
+        let RL = selection.newRoleName;
+        let ENIDArr = EN.split(":");
+        let EmployeeID = ENIDArr[0];
+        let EmployeeFullName = ENIDArr[1];
+        let RLIDArr = RL.split(":");
+        let RoleID = RLIDArr[0];
+        let newRoleName = RLIDArr[1];
 
         const query = connection.query(
           "UPDATE employee SET ? WHERE ?",
@@ -335,12 +335,14 @@ connection.connect((err) => {
               role_id: RoleID,
             },
             {
-              id: DepartmentID,
+              id: EmployeeID,
             },
           ],
           function (err, res) {
             if (err) throw err;
-            console.log(res.affectedRows + " employee updated!\n");
+            console.log(
+              EmployeeFullName + " role updated to: " + newRoleName + "."
+            );
             promptUser();
           }
         );
